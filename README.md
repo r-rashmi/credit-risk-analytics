@@ -31,19 +31,22 @@ cd credit-risk-analytics
 
 #### Environment setup
 
-- Using `uv`:
+- Using `uv` (recommended):
+> If you don't have `uv`, install it following the official docs: [uv installation guide](https://docs.astral.sh/uv/). On macOS/Linux you can use:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+Then sync the environment:
 ```bash
 uv sync
 uv run python -V
 ```
 
 ### Configure Kaggle credentials
-Create a `.env` in the project root:
-```bash
-cat > .env << 'EOF'
+Create a `.env` in the project root with:
+```env
 KAGGLE_USERNAME=kaggle_username
 KAGGLE_KEY=kaggle_api_key
-EOF
 ```
 
 ### Usage
@@ -53,10 +56,7 @@ EOF
 ```bash
 uv run jupyter lab
 ```
-- With `pip`/venv:
-```bash
-jupyter lab
-```
+
 Open `main.ipynb` and run cells top-to-bottom.
 
 #### Programmatic example (Python)
@@ -83,16 +83,6 @@ for name, df in dfs.items():
 - For imbalanced data, considering:
   - Class weights (`class_weight='balanced'` for Random Forest)
 
-### Development
-- Formatting/linting (if installed):
-```bash
-uv run black .
-uv run flake8
-```
-- Tests (placeholder):
-```bash
-uv run pytest -q
-```
 
 ### Environment variables
 - `KAGGLE_USERNAME`: Kaggle username
@@ -101,4 +91,4 @@ uv run pytest -q
 ### Troubleshooting
 - “Kaggle credentials not found”: ensure `.env` exists and values are correct, then restart the kernel.
 - Notebook cannot find modules: ensure you launched Jupyter from the project’s environment.
-- Missing packages: run `uv sync` (or `pip install -e .`).
+- Missing packages: run `uv sync`.
